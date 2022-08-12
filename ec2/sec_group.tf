@@ -1,5 +1,5 @@
-resource "aws_security_group" "allow_tls" {
-  name        = "allow_tls"
+resource "aws_security_group" "star" {
+  name        = "star"
   description = "Allow TLS inbound traffic"
   vpc_id      = aws_vpc.main.id
 
@@ -20,7 +20,6 @@ resource "aws_security_group" "allow_tls" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  tags = {
-    Name = "allow_tls"
+  tags = local.common.tags
   }
 }
