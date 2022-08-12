@@ -17,8 +17,12 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
+  vpc_security_group_ids = [aws.sec.group.star]
+  associate_public_ip_adresess = true
+  avialibility_zone = "us-east-1"
 
-  tags = {
-    Name = "HelloWorld"
+  tags = local.common.tags
+   output "all"
+  value = aws_instance.web*
   }
 }
